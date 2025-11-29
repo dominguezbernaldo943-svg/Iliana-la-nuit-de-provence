@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Joyeux Anniversaire Iliana – La Nuit de Provence</title>
+
+  <!-- Elegant Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --gold: #d4af37;
+      --gold-soft: #f5d78a;
+      --ivory: #fdf6e3;
+      --overlay: rgba(0, 0, 0, 0.78);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #000;
+      font-family: "Cormorant Garamond", serif;
+      line-height: 1.6;
+      color: var(--ivory);
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+    }
+
+    .page {
+      min-height: 100vh;
+      padding: 60px 10%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed; /* simple parallax */
+      overflow: hidden;
+      scroll-snap-align: start;
+      animation: fadeInUp 1.2s ease both;
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--overlay);
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(212,175,55,0.14) 0, transparent 55%),
+        radial-gradient(circle at 80% 0%, rgba(255,255,255,0.04) 0, transparent 60%);
+      mix-blend-mode: screen;
+    }
+
+    .content {
+      position: relative;
+      max-width: 860px;
+      text-align: center;
+      padding: 40px 40px 46px;
+      border-radius: 18px;
+      border: 1px solid rgba(212, 175, 55, 0.55);
+      box-shadow:
+        0 0 45px rgba(0, 0, 0, 0.95),
+        0 0 35px rgba(212, 175, 55, 0.35);
+      background:
+        radial-gradient(circle at top, rgba(212,175,55,0.12), rgba(0,0,0,0.96));
+      will-change: transform;
+      transition: transform 0.2s ease-out;
+    }
+
+    .cover {
+      background-image: url("Menu 1.png");
+      animation-delay: 0s;
+    }
+
+    .intro {
+      background-image: url("Cierre.png");
+      animation-delay: 0.3s;
+    }
+
+    .menu-page {
+      background-image: url("Menu description.png");
+      animation-delay: 0.6s;
+    }
+
+    .closing {
+      background-image: url("Cierre.png");
+      animation-delay: 0.9s;
+    }
+
+    h1, h2, h3 {
+      font-family: "Playfair Display", serif;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      text-shadow: 0 0 10px rgba(212, 175, 55, 0.55);
+    }
+
+    .shimmer {
+      background: linear-gradient(120deg,
+        rgba(160, 130, 40, 0.1),
+        var(--gold),
+        rgba(255, 230, 150, 0.9),
+        var(--gold),
+        rgba(160, 130, 40, 0.1)
+      );
+      background-size: 250% 250%;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: shimmer 6s ease-in-out infinite;
+    }
+
+    .cover-title {
+      font-size: 3.1rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .cover-subtitle {
+      font-family: "Cinzel", serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+    }
+
+    .divider {
+      width: 130px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 1.6rem auto 1.4rem;
+      box-shadow: 0 0 12px rgba(212,175,55,0.7);
+    }
+
+    .scroll-hint {
+      margin-top: 1.6rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(245, 215, 138, 0.8);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.85;
+    }
+
+    .scroll-hint span {
+      font-size: 1.1rem;
+      animation: floatDown 1.6s ease-in-out infinite;
+    }
+
+    .intro h1 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .intro-lead {
+      font-family: "Cinzel", serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 1.5rem;
+    }
+
+    .intro p {
+      font-size: 1.02rem;
+      color: #fdf6e3;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      margin: 1.9rem 0 0.6rem;
+      color: var(--gold);
+    }
+
+    .dish-title {
+      font-size: 1.15rem;
+      margin-top: 1.2rem;
+      margin-bottom: 0.35rem;
+      color: var(--gold-soft);
+    }
+
+    .tagline {
+      font-size: 1rem;
+      font-style: italic;
+      color: #f2d28b;
+      margin-bottom: 0.8rem;
+    }
+
+    .emoji-label {
+      font-size: 1.2rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.4rem;
+      color: var(--gold-soft);
+    }
+
+    .menu-page p,
+    .closing p {
+      font-size: 1.05rem;
+      color: #fdf6e3;
+    }
+
+    .signature {
+      margin-top: 1.8rem;
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 0.98rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(245, 215, 138, 0.9);
+    }
+
+    /* Gold footer */
+    .gold-footer {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 18px;
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 40;
+    }
+
+    .gold-footer-inner {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(212,175,55,0.7);
+      background: radial-gradient(circle at top, rgba(212,175,55,0.22), rgba(0,0,0,0.96));
+      box-shadow: 0 0 18px rgba(0,0,0,0.9);
+      animation: footerGlow 5s ease-in-out infinite;
+    }
+
+    .gold-heart {
+      font-size: 1.05rem;
+      color: var(--gold-soft);
+      animation: heartBeat 2.4s ease-in-out infinite;
+    }
+
+    .gold-footer-text {
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #f5e2b8;
+      white-space: nowrap;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translate3d(0, 40px, 0);
+      }
+      to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes floatDown {
+      0% { transform: translateY(0); opacity: 0.4; }
+      50% { transform: translateY(6px); opacity: 1; }
+      100% { transform: translateY(0); opacity: 0.4; }
+    }
+
+    @keyframes footerGlow {
+      0%, 100% { box-shadow: 0 0 18px rgba(0,0,0,0.9); }
+      50% { box-shadow: 0 0 26px rgba(212,175,55,0.5); }
+    }
+
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      30% { transform: scale(1.18); }
+      60% { transform: scale(1.05); }
+    }
+
+    @media (max-width: 768px) {
+      .page { padding: 40px 6%; }
+      .content { padding: 30px 24px 34px; }
+      .cover-title { font-size: 2.3rem; }
+      .intro h1 { font-size: 1.35rem; }
+      .section-title { font-size: 1.2rem; }
+      .gold-footer-text { font-size: 0.7rem; letter-spacing: 0.12em; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Auto-play ambient audio -->
+  <audio id="bg-audio" src="ambient.mp3" loop autoplay></audio>
+
+  <!-- COVER -->
+  <section class="page cover">
+    <div class="content">
+      <h1 class="cover-title shimmer">Joyeux Anniversaire Iliana</h1>
+      <div class="divider"></div>
+      <p class="cover-subtitle">La Nuit de Provence</p>
+      <div class="scroll-hint">
+        DESLIZA PARA DESCUBRIR
+        <span>⬇</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="page intro">
+    <div class="content">
+      <h1 class="shimmer">✨ MENÚ DE ALTA GASTRONOMÍA – “LA NUIT DE PROVENCE”</h1>
+      <p class="intro-lead">🍾 EXPERIENCIA GASTRONÓMICA DE ORIGEN FRANCÉS</p>
+      <p>
+        Cada plato de esta velada nace de ingredientes seleccionados en regiones legendarias de Francia,
+        transportados en cámaras refrigeradas de precisión y trabajados con técnicas transmitidas en cocinas
+        clásicas europeas. Esta experiencia no es solo una cena, es un viaje sensorial.
+      </p>
+    </div>
+  </section>
+
+  <!-- MENU PAGE -->
+  <section class="page menu-page">
+    <div class="content">
+
+      <h2 class="section-title shimmer">Ratatouille Confit Byaldi de Provence</h2>
+      <div class="tagline">Entrante – “Jardín del Mediterráneo”</div>
+      <p>
+        Una obra maestra inspirada en las antiguas cocinas de la Costa Azul. Cada lámina de berenjena,
+        calabacín y tomate es cortada con precisión milimétrica y cocinada lentamente sobre una base de
+        pimientos rojos asados al fuego de encina. Los tomates han sido seleccionados por su dulzor natural,
+        cultivados en suelos minerales similares a los de la Provenza francesa. El plato se sella con un
+        delicado velo de reducción balsámica artesanal.
+      </p>
+
+      <h2 class="section-title shimmer">Carré de Porc Royal à la Moutarde Ancienne</h2>
+      <div class="emoji-label">🐖 Plato Principal – “Corte Real de Borgoña Blanca”</div>
+      <p>
+        Un majestuoso carré de cerdo francés de más de seis libras, preparado siguiendo las tradiciones de Borgoña.
+        El corte proviene de cerdos jóvenes alimentados con granos seleccionados, siguiendo técnicas heredadas de
+        antiguas granjas del norte de Francia. Se marina durante doce horas en mostaza Dijon de grano antiguo,
+        hierbas provenzales, ajo fresco y un toque de miel, permitiendo que los sabores penetren cada fibra del corte.
+        Luego, se sella en sartén de hierro forjado y se asa lentamente al horno, logrando una textura tierna bajo
+        una costra dorada y aromática. Se acompaña de una salsa cremosa francesa, elaborada con caldo reducido,
+        crema espesa y tomillo fresco.
+      </p>
+
+      <h2 class="section-title shimmer">🍚 Accompagnements</h2>
+      <h3 class="dish-title">Riz Pilaf à la Provençale</h3>
+      <p>
+        Arroz perfumado en caldo claro, enriquecido con chalotas caramelizadas y una esencia ligera de
+        tomate, evocando campos soleados del sur de Francia.
+      </p>
+
+      <h2 class="section-title shimmer">🍋 Boisson Signature – Brise de Lavande des Alpes</h2>
+      <p>
+        Refresco artesanal de limón fresco con jarabe de lavanda, inspirado en flores silvestres
+        recolectadas en zonas altas de los Alpes franceses. Servido frío, con burbujas finas que limpian
+        el paladar y elevan la experiencia gastronómica.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="page closing">
+    <div class="content">
+      <h2 class="section-title shimmer">🕯️ Cierre de Experiencia</h2>
+      <p>
+        Todo el menú está pensado para ser servido con pan artesanal de corteza crujiente, inspirado en la tradición panadera francesa.
+      </p>
+      <p>
+        Cada bocado está diseñado para recordar que la alta cocina no se trata solo de lujo… sino de amor, técnica y respeto por el ingrediente.
+      </p>
+      <p class="signature">
+        Ce menu n’existe que pour cette nuit.<br>
+        Créé pour Iliana – Une seule nuit.
+      </p>
+    </div>
+  </section>
+
+  <!-- Gold footer signature -->
+  <footer class="gold-footer">
+    <div class="gold-footer-inner">
+      <span class="gold-heart">♥</span>
+      <span class="gold-footer-text">Créé pour Iliana – Une seule nuit inoubliable.</span>
+    </div>
+  </footer>
+
+  <script>
+    // 3D parallax only
+    const contents = document.querySelectorAll('.content');
+    window.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth) - 0.5;
+      const y = (e.clientY / window.innerHeight) - 0.5;
+      contents.forEach(el => {
+        el.style.transform =
+          `translate3d(${-x * 10}px, ${-y * 10}px, 0)
+           rotateX(${y * -6}deg) rotateY(${x * 6}deg)`;
+      });
+    });
+  </script>
+
+</body>
+</html>
